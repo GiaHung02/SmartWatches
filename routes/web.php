@@ -18,10 +18,7 @@ use App\Http\Controllers\UserController;
 */
 
 
-
 Route::get('/', [HomeController::class, 'home'])->name('home');
-
-
 Route::get('/search', [HomeController::class, 'search'])->name('sesarch');
 
 Route::get('/CATEGORY',[HomeController::class,'CATEGORY'])->name('CATEGORY');
