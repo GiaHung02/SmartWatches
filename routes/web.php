@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -16,6 +18,15 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/admin', [DashboardController::class, 'dashboard']);
+Route::get('/product', [ProductController::class, 'index']);
+Route::get('/productCreate', [ProductController::class, 'create']);
 
 
 
@@ -45,3 +56,4 @@ Route::get('/login',[UserController::class,'login'])->name('login');
 Route::post('/login',[UserController::class,'login_action'])->name('login.action');
 
 // Route::get('/detail/{id}',[HomeController::class,'detail'])->name('details');
+
