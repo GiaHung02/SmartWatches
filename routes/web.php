@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', [DashboardController::class, 'dashboard']);
+Route::get('/product', [ProductController::class, 'index']);
+Route::get('/productCreate', [ProductController::class, 'create']);

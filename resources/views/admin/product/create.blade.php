@@ -6,11 +6,11 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>Product</h1>
-            </div>
+            </div>  
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li>
+                    {{-- <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li> --}}
                     <li class="breadcrumb-item active">Create New</li>
                 </ol>
             </div>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="inputName">Name</label>
