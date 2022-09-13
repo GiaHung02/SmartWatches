@@ -184,6 +184,12 @@
         @endif
         @if (session('password'))
         <p class="password-form">{{ session('password') }} </p>
+        @if($errors->any())
+        @foreach ($errors->all() as $err)
+        <p class="alert alert-danger"> {{ $err }}</p>
+        @endforeach
+
+        @endif
     @endif
         <form method="POST" action="{{ route('login.action') }}">
             @csrf
