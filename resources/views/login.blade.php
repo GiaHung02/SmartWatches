@@ -191,7 +191,7 @@
 
         @endif
     @endif
-        <form method="POST" action="{{ route('login.action') }}">
+        <form method="POST" action="{{ route('processLogin') }}">
             @csrf
             <div class="form-item">
                 <span class="material-icons-outlined">
