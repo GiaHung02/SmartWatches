@@ -180,20 +180,11 @@
                     </ul>
                 </li>
 
-
-
-
-
-
-
-
-
-
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>
-                            Login & Register v1
+                            Login & Register 
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -201,27 +192,22 @@
                         <li class="nav-item">
                             <a href="../examples/login.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Login v1</p>
+                                <p>Login</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="../examples/register.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Register v1</p>
+                                <p>Register</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="../examples/forgot-password.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Forgot Password v1</p>
+                                <p>Forgot Password </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="../examples/recover-password.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Recover Password v1</p>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </li>
 
