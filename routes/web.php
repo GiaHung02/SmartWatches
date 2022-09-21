@@ -58,14 +58,13 @@ Route::post('/login', [AuthenticationController::class, 'login_action'])->name('
 
 
 // auth
-Route::group(['middleware' => 'signined'], function () {
     Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
-    Route::post('/view_cart', [HomeController::class, 'viewCart'])->name('viewCart');
+    Route::get('/view_cart', [HomeController::class, 'viewCart'])->name('viewCart');
     Route::post('/update_cart', [HomeController::class, 'updateCart'])->name('updateCart');
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
     Route::get('/clear_cart', [HomeController::class, 'clearCart'])->name('clearCart');
-    Route::post('/save_cart', [HomeController::class, 'saveCart'])->name('saveCart');
-});
+    Route::get('/save_cart', [HomeController::class, 'saveCart'])->name('saveCart');
+
 
 
 Route::group(['middleware' => 'signined', 'prefix' => 'admin', 'as' => 'admin.'], function () {

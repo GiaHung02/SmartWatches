@@ -147,7 +147,7 @@
         <div class="box">
           <a href="">
             <div class="img-box">
-              <img src="timups-html/timups-html/images/apple2.png" alt="">
+              <img src="timups-html/timups-html/images/{{$product->photo}}" alt="">
             </div>
             <div class="detail-box">
               <h6>

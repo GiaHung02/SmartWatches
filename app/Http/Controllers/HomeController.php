@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\cartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -45,6 +48,30 @@ class HomeController extends Controller
         return view('garmin', compact('products'));
     }
 
+    public function addCart(Request $request)
+    {
+        $id = $request->id;
+        $quantity = $request->quantity;
+        $products = Product::find($id);
+        if ($products != null) {
+            $cart = [];
+            if ($request->session()->get('cart') != null) {
+                $cart = $request->session()->get('cart');
+            }
+            if (array_key_exists($id, $cart)) {
+                $cart[$id]->incrementQuantity($quantity);
+            } else {
+                $item = new cartItem($products, $quantity);
+                $cart[$id] = $item;
+            }
+            $request->session()->put('cart', $cart);
+        }
+    }
+
+    public function viewCart()
+    {
+        return view('view_cart');
+    }
     
     public function detail($id) {
        
