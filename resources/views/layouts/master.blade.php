@@ -13,7 +13,7 @@
   <link rel="shortcut icon" href="timups-html/timups-html/images/favicon.png" type="image/x-icon">
   @yield('title')
 
-  <title>Timups</title>
+  <title>Smartwatches</title>
 
 
   <!-- bootstrap core css -->

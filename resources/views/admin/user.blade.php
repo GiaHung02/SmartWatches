@@ -24,9 +24,6 @@
 
     <!-- Default box -->
     <div class="card">
-        @if (session('status'))
-            <h6 class="alert alert-success">{{ session('status') }}</h6>
-            @endif 
         <div class="card-header">
             <h3 class="card-title">Create New Product</h3>
 
@@ -40,7 +37,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="inputName">Name</label>
@@ -68,31 +65,6 @@
                     <label for="inputName">Photo</label>
                     <input type="file" id="photo" name="photo" class="form-control">
                 </div>
-              
-                <div class="form-group">
-                    <label for="type">Type</label>  
-                    <select name="type" id="type">type
-                        <option value="apple">Apple</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value="Garmin">Garmin</option>
-                        <option value="Xiaomi">Xiaomi</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="Active">Active</label>
-                    <div class="custom-control custom-radio">
-                        <input class="custom-control-input" value="1"  type="radio" id="active" name="active" >
-                        <label for="active" class="custom-control-label">YES</label>
-                    </div>
-
-                    <div class="custom-control custom-radio">
-                        <input class="custom-control-input" value="0"  type="radio" id="no_active" name="active" >
-                        <label for="no_active" class="custom-control-label">No</label>
-                    </div>
-                </div>
-
-              
                 <input type="submit" value="Create New Project" class="btn btn-outline-success">
             </form>
 
