@@ -41,22 +41,52 @@
                         <th style="width: 5%">Id</th>
                         <th style="width: 20%">Name</th>
                         <th style="width: 15%">Price</th>
-                        <th style="width: 40%">Image</th>
+                        <th style="width: 30%">Image</th>
+                        
+                        <th style="width: 20%">Type</th>
                         <th style="width: 20%">Action</th>
+                        <th></th>
+
+
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($prods as $item)
+                    @foreach ($products as $item)
 
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->price }}</td>
+                        
                         <td>@if ($item->photo != null)
-                            <img src="{{ asset('images') . '/' . $item->photo }}" alt="{{ $item->name }}" style="width:200px;height: auto;">
+                            <img src="{{ asset('assets/images/products') . '/' . $item->photo }}" alt="{{ $item->name }}" style="width:200px;height: auto;">
                             @endif
                         </td>
-                        <td></td>
+                        
+                        <td>{{ $item->type }}</td>
+                       
+                         <td>
+                          @if ($item->active == 0)
+                          <a href=""class="thumbs-down" ui-toggle-class=""><i class="fa fa-thumbs-down " aria-hidden="true" style="color: red"></i>
+                          @else
+                          <a href=""class="thumbs-up" ui-toggle-class=""><i class="fa fa-thumbs-up " aria-hidden="true" style="color: greenyellow"></i>
+                          
+                              
+                          @endif
+                        </td>
+                        <td>
+                            <a href=""class="active" ui-toggle-class="">
+                               
+                                <i class="fa fa-times text-danger text"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ url('admin/product/'.$item->id.'/edit')  }}"class="active" ui-toggle-class="">
+                               
+                                <i class="fa fa-wrench " aria-hidden="true"></i>
+
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

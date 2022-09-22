@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +24,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', [DashboardController::class, 'dashboard']);
-Route::get('/product', [ProductController::class, 'index']);
-Route::get('/productCreate', [ProductController::class, 'create']);
+Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
+Route::get('/product', [ProductController::class, 'index'])->name('Product');
+Route::get('/productCreate', [ProductController::class, 'create'])->name('ProductCreate');
+Route::post('/product', [ProductController::class, 'store'])->name('Product.store');
+Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::delete('/product/destroy', [ProductController::class, 'detroy'])->name('destroy');
+    
 
 
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 
-Route::get('/search', [HomeController::class, 'search'])->name('sesarch');
+Route::post('/search', [HomeController::class, 'search'])->name('sesarch');
 
 Route::get('/CATEGORY',[HomeController::class,'CATEGORY'])->name('CATEGORY');
 

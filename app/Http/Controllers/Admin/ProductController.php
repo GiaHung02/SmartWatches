@@ -17,8 +17,8 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $prods = Product::all();
-        return view('admin.product.index', compact('prods'));
+        $products = Product::all();
+        return view('admin.product.index', compact('products' ));
     }
 
     /**
@@ -40,7 +40,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        
         $product = $request->all();
         // xu ly upload hinh vao thu muc
         if ($request->hasFile('photo')) {
@@ -58,8 +59,26 @@ class ProductController extends Controller
         $p -> photo = $imageName;
         // $p->slug = \changeTitle($p->name);
         $p-> save();
-        return redirect()->route('admin.product.index');
-    }
+        // return redirect()->route('admin.product.index');
+        return redirect()->route('Product');
+
+        // $product = new Product;
+        // $product->name = $request->input('name');
+        // $product->price = $request->input('price');
+        // if( $request->hasFile('photo'))
+        // {
+        //     $file = $request->file('photo');
+        //     $extension =$file->getClientOriginalExtension();
+        //     $filename = time().'.'.$extension;
+        //     $file->move('images/', $filename);
+        //     $product->photo = $filename;
+        // }
+        // $product->save();
+        // $product->type = $request->input('type');
+        // return redirect()->route('admin.product.index');
+
+
+     }
 
     /**
      * Display the specified resource.
@@ -78,9 +97,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id ,Request $request)
     {
-        //
+        $product = $request->all();
+        $product = Product::findOrFail($id);
+        return view("admin.product.edit",compact('products' ));
+
     }
 
     /**
@@ -101,8 +123,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        //
+        $result = $this->delete($request);
+        $product = Product::where('id', $request->input('id'))->first();
+        if ($product) {
+            $product->delete();
+            return true;
+        }
+        return false;
     }
 }
