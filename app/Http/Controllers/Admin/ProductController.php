@@ -62,20 +62,7 @@ class ProductController extends Controller
         // return redirect()->route('admin.product.index');
         return redirect()->route('Product');
 
-        // $product = new Product;
-        // $product->name = $request->input('name');
-        // $product->price = $request->input('price');
-        // if( $request->hasFile('photo'))
-        // {
-        //     $file = $request->file('photo');
-        //     $extension =$file->getClientOriginalExtension();
-        //     $filename = time().'.'.$extension;
-        //     $file->move('images/', $filename);
-        //     $product->photo = $filename;
-        // }
-        // $product->save();
-        // $product->type = $request->input('type');
-        // return redirect()->route('admin.product.index');
+       
 
 
      }
@@ -101,7 +88,7 @@ class ProductController extends Controller
     {
         $product = $request->all();
         $product = Product::findOrFail($id);
-        return view("admin.product.edit",compact('products' ));
+        return view("admin.product.edit");
 
     }
 
@@ -114,7 +101,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        try {
+            $product->update($request->all());
+            return redirect()->route('admin.product.index');
+        } catch (\Throwable $th) {
+            //throw $th
+        }
+        return redirect()->route('Product');
     }
 
     /**
@@ -123,14 +116,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request,  Product $product)
     {
-        $result = $this->delete($request);
-        $product = Product::where('id', $request->input('id'))->first();
-        if ($product) {
-            $product->delete();
-            return true;
-        }
-        return false;
+        $product->delete();
+        return redirect()->route('Product');
     }
 }

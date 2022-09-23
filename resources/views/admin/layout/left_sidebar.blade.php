@@ -48,24 +48,24 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('Product') }}" class="nav-link">
+                            <a href="{{ route('product.index') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>view all product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('ProductCreate') }}" class="nav-link">
+                            <a href="{{ route('product.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>create product</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="../../index3.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p></p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
            

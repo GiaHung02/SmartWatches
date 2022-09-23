@@ -12,7 +12,7 @@
                     {{-- <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li> --}}
                     <button style="border-radius: 2em">
-                        <a href="{{ route("ProductList") }}"><li class="breadcrumb-item active"> Product List</li></a></button>
+                        <a href="{{ route("product.index") }}"><li class="breadcrumb-item active"> Product List</li></a></button>
                 </ol>
             </div>
         </div>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="inputName">Name</label>

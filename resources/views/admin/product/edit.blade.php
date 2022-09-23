@@ -39,33 +39,32 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('Product.edit', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <label for="inputName">Name</label>
-                    <input type="text" id="name" name="name" class="form-control">
-                </div>
+                @method('PUT')
+                <input type="hidden" name="id" value="{{ $product->id }}"/>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ $product->name }}">
+          </div>
+    
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" id="price" name="price" class="form-control ">
+                    <input type="text" id="price" name="price" class="form-control "  value="{{ $product->name }}">
                 </div>
                 <div class="form-group">
                     <label for="short_desc">Short Description</label>
-                    <input type="text" id="short_desc" name="short_desc" class="form-control ckeditor">
+                    <input type="text" id="short_desc" name="short_desc" class="form-control ckeditor"  value="{{ $product->short_desc }}">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea id="description" name="description" class="form-control ckeditor"></textarea>
+                    <textarea id="description" name="description" class="form-control ckeditor" value="{{ $product->description }}">
+                    </div>></textarea>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="inputStatus" class="form-control custom-select">
-                        <option selected disabled>Select one</option>
-                    </select>
-                </div> --}}
+       
                 <div class="form-group">
                     <label for="inputName">Photo</label>
-                    <input type="file" id="photo" name="photo" class="form-control">
+                    <input type="file" id="photo" name="photo" class="form-control" value="{{ $product->photo}}">
                 </div>
               
                 <div class="form-group">
@@ -92,7 +91,7 @@
                 </div>
 
               
-                <input type="submit" value="Create New Project" class="btn btn-outline-success">
+                <input type="submit" value="Update Product" class="btn btn-outline-success">
             </form>
 
         </div>

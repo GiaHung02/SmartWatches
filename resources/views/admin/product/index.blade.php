@@ -11,7 +11,7 @@
                 <ol class="breadcrumb float-sm-right">
                     {{-- <li class="breadcrumb-item"><a href="#">Home</a></li> --}}
                     <button style="border-radius: 2em">
-                    <a href="{{ route("CreateProduct") }}"><li class="breadcrumb-item active"> Create Product</li></a></button>
+                    <a href="{{ route("product.create") }}"><li class="breadcrumb-item active"> Create Product</li></a></button>
                 </ol>
             </div>
         </div>
@@ -45,7 +45,7 @@
                         <th style="width: 30%">Image</th>
                         
                         <th style="width: 20%">Type</th>
-                        <th style="width: 20%">Action</th>
+                        {{-- <th style="width: 20%">Action</th> --}}
                         <th></th>
 
 
@@ -66,7 +66,7 @@
                         
                         <td>{{ $item->type }}</td>
                        
-                         <td>
+                         {{-- <td>
                           @if ($item->active == 0)
                           <a href=""class="thumbs-down" ui-toggle-class=""><i class="fa fa-thumbs-down " aria-hidden="true" style="color: red"></i>
                           @else
@@ -74,19 +74,25 @@
                           
                               
                           @endif
-                        </td>
+                        </td> --}}
                         <td>
                             <a href=""class="active" ui-toggle-class="">
+                                <form action="{{ route('product.destroy', $item->id) }}" method="POST" style="display: inline-block">
+                                    @csrf
+                             @method('DELETE')
+                            <input type="hidden" name="id" value="{{ $item->id }}"/>
+                            <input type="submit" value="Delete" class="btn btn-default">
+
                                
-                                <i class="fa fa-times text-danger text"></i>
+
                             </a>
                         </td>
                         <td>
-                            <a href="{{ url('admin/product/'.$item->id.'/edit')  }}"class="active" ui-toggle-class="">
+                           
                                
-                                <i class="fa fa-wrench " aria-hidden="true"></i>
+                            <td><a href="{{ route('product.edit', $item->id) }}" class="btn btn-primary" >Edit</a>
 
-                            </a>
+                           
                         </td>
                     </tr>
                     @endforeach
