@@ -17,11 +17,11 @@ class HomeController extends Controller
         return view('home.home', compact('products'));
     }
 
-    public function search() {
-        // $keywords  = $request->keywords_submit;
+    public function search(Request $request) {
+        $keywords  = $request->keywords_submit;
         $products = Product::all();
-        $search = Product::where('name')->orderBy('created_at','name')->take(6)->get();
-        return view('timkiem', ('search'),$search);
+        // $search = DB::table('products') where('name','like','%' . $keywords .'%')->orderBy('created_at','name')->take(6)->get();
+        // return view('timkiem', ('search'),$search);
     }
 
     public function CATEGORY() {

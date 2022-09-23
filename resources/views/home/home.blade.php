@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  <title>Timups</title> 
+  <title>SmatchWatches</title> 
 @endsection
 
 @section('css')
@@ -128,14 +128,14 @@
   <div class="container">
     <div class="heading_container heading_center">
       <form action=""method="POST">
-        
+        @csrf
         
         <input type="text" name="keywords_submit" placeholder="Search"/>
         <input type="submit" name="" class="btn btn-success btn-sm" value="submit"/>
 
       </form>
       <h2>
-        Latest Watches
+        All Watch
       </h2>
     </div>
     <div class="row">
@@ -145,7 +145,7 @@
      
       <div class="col-md-6 ">
         <div class="box">
-          <a href="">
+          <a href="{{route('detail', ['id'=>$product->id])}}">
             <div class="img-box">
               <img src="timups-html/timups-html/images/{{$product->photo}}" alt="">
             </div>

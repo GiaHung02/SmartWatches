@@ -22,6 +22,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('price')->nullable();
             $table->string('photo')->nullable();
+            $table->varchar('type')->nullable();
+            $table->integer('active')->nullable();
             $table->timestamps();
         });
     }

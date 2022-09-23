@@ -6,8 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AuthenticationController;
-
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,17 +21,16 @@ use App\Http\Controllers\AuthenticationController;
 
 
 
-// admin
-Route::get('/admin', [DashboardController::class, 'dashboard']);
-Route::get('/product', [ProductController::class, 'index'])->name("ProductList");
-Route::get('/createproduct', [ProductController::class, 'create'])->name("CreateProduct");
+
+
+    
 
 
 // home
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-// home product
-Route::get('/search', [HomeController::class, 'search'])->name('sesarch');
+
+Route::post('/search', [HomeController::class, 'search'])->name('sesarch');
 
 Route::get('/CATEGORY', [HomeController::class, 'CATEGORY'])->name('CATEGORY');
 
@@ -53,8 +51,6 @@ Route::post('/register', [UserController::class, 'register_action'])->name('regi
 
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('/login', [AuthenticationController::class, 'login_action'])->name('processLogin');
-
-// Route::get('/detail/{id}',[HomeController::class,'detail'])->name('details');
 
 
 // auth
