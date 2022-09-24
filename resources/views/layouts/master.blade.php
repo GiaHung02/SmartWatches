@@ -14,22 +14,31 @@
   @yield('title')
 
   <title>Smartwatches</title>
-
-
+  
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="timups-html/timups-html/css/bootstrap.css" />
   <!--owl slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
+  
   <!-- font awesome style -->
   <link href="timups-html/timups-html/css/font-awesome.min.css" rel="stylesheet" />
-
+  
   <!-- Custom styles for this template -->
   <link href="timups-html/timups-html/css/style.css" rel="stylesheet" />
-
-    <!-- responsive style -->
-    <link href="timups-html/timups-html/css/responsive.css" rel="stylesheet" />
-  @yield('css')
+  
+  <!-- responsive style -->
+  <link href="timups-html/timups-html/css/responsive.css" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
+  @yield('mycss')
 </head>
 
   <body>
@@ -60,4 +69,5 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
     </body>
-@yield('js')
+@yield('myjs')
+

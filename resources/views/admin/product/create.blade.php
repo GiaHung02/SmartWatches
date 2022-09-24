@@ -12,7 +12,7 @@
                     {{-- <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li> --}}
                     <button style="border-radius: 2em">
-                        <a href="{{ route("product.index") }}"><li class="breadcrumb-item active"> Product List</li></a></button>
+                        <a href="{{ route('Product.index') }}"><li class="breadcrumb-item active"> Product List</li></a></button>
                 </ol>
             </div>
         </div>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="inputName">Name</label>
@@ -78,21 +78,6 @@
                         <option value="Xiaomi">Xiaomi</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label for="Active">Active</label>
-                    <div class="custom-control custom-radio">
-                        <input class="custom-control-input" value="1"  type="radio" id="active" name="active" >
-                        <label for="active" class="custom-control-label">YES</label>
-                    </div>
-
-                    <div class="custom-control custom-radio">
-                        <input class="custom-control-input" value="0"  type="radio" id="no_active" name="active" >
-                        <label for="no_active" class="custom-control-label">No</label>
-                    </div>
-                </div>
-
-              
                 <input type="submit" value="Create New Project" class="btn btn-outline-success">
             </form>
 

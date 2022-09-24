@@ -4,9 +4,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [DashboardController::class, 'dashboard'])->name('admin');
-//Product Route
-Route::resource('/product', ProductController::class);
+// Route::get('/', [DashboardController::class, 'dashboard'])->name('admin');
+// //Product Route
+// Route::resource('/product', ProductController::class);
 
 // Route::get('/product', [ProductController::class, 'index'])->name('Product');
 // Route::get('/productCreate', [ProductController::class, 'create'])->name('ProductCreate');

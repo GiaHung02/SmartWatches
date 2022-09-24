@@ -48,7 +48,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('product.index') }}" class="nav-link">
+                            <a href="{{ route('Product.index') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>view all product</p>
