@@ -60,7 +60,7 @@
                         <td>{{ $item->price }}</td>
                         
                         <td>@if ($item->photo != null)
-                            <img src="{{ asset('images') . '/' . $item->photo }}" alt="{{ $item->name }}" style="width:200px;height: auto;">
+                            <img src="{{ asset('assets/images/products') . '/' . $item->photo }}" alt="{{ $item->name }}" style="width:200px;height: auto;">
                             @endif
                         </td>
                         
