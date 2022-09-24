@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AccountController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,9 +28,9 @@ use App\Http\Controllers\AccountController;
 
 Route::get('/admin/product', [ProductController::class, 'index'])->name("ProductList");
 Route::get('/createproduct', [ProductController::class, 'create'])->name("CreateProduct");
-Route::get('/admin.', [UserController::class, 'users']);
+
 Route::prefix('admin')->name('admin')->middleware('foradmin')->group(function () {
-   
+    Route::get('/', [UserController::class, 'users']);
     Route::get('createuser', [UserController::class, 'displayAddUser'])->name('createuser');
     Route::get('createuser', [UserController::class, 'addUser'])->name('addUser');
 

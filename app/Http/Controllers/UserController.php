@@ -76,8 +76,8 @@ class UserController extends Controller
         // kiem tra dang nhap cach 1
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-            $user= Auth::attempt() ;
-            session()->push('user',$user);
+            $user = Auth::user();
+            session()->push('user', $user);
             return redirect()->intended('/');
         };
 
@@ -98,17 +98,18 @@ class UserController extends Controller
 
 
     //check user
+
     public function checkLogin(Request $request)
     {
         $email = $request->email;
-        $password = $request->password;
+        $pwd = $request->password;
         $user = DB::table('accounts')->where('email', $email)->first();
-        if ($user != null && $user->password == $password) {
-           session()->push('user', $user);
+        if ($user != null && $user->password == $pwd) {
+            $request->session()->push('user', $user);
             if ($user->role == 1) {
                 return redirect('admin');
             } else {
-                return redirect("/" . $user->account_id);
+                return redirect("user/userdetail" . $user->account_id);
             }
         } else {
             return redirect('login')->with('message', 'Login Fail.');
@@ -128,7 +129,7 @@ class UserController extends Controller
 
     public function addUser(Request $request)
     {
-        
+
         $email = $request->email;
         $password = $request->password;
         $fullname = $request->fullname;
@@ -138,7 +139,7 @@ class UserController extends Controller
         $address = $request->address;
         $phone = $request->phone;
         DB::table('account')->insert([
-            
+
             'email' => $email,
             'password' => $password,
             'fullname' => $fullname,
