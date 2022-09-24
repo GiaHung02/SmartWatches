@@ -38,7 +38,7 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -60,14 +60,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route("CreateProduct") }}" class="nav-link">
+                            <a href="{{ route('product.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Product Create</p>
                             </a>
                         </li>
                        
                     </ul>
-                </li>
+                </li> --}}
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
