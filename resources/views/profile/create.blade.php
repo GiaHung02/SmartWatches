@@ -1,22 +1,13 @@
 @extends('layouts.master')
-<title>Profile Form</title>
+
+@section('title')
+<title>Profile form</title>
+
+    
+@endsection
+
 @section('content')
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Update Profile Form</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Profile Form</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+   
 
     <!-- Main content -->
     <section class="content">
@@ -311,11 +302,6 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          {{-- <input type="submit" value="Create" class="btn btn-success"> --}}
         </div>
       </div>
     </section>

@@ -53,7 +53,7 @@
                     <td>{{ $item->address }}</td>
                     <td>{{ $item->city }}</td>
                     <td>{{ $item->country }}</td>
-                    <td><a href="{{ route('profile.create', $item->id) }}" class="btn btn-primary" >Edit</a>
+                    <td><a href="{{ route('profile.edit', $item->id) }}" class="btn btn-primary" >Edit</a>
                     <form action="{{ route('profile.destroy', $item->id) }}" method="POST" style="display: inline-block">
                     @csrf
                     @method('DELETE')
