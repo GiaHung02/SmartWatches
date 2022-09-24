@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -74,4 +75,9 @@ Route::group(['middleware' => 'signined', 'prefix' => 'admin', 'as' => 'admin.']
         Route::get('/product', [ProductController::class, 'index'])->name('product');
     });
 });
+
+
+Route::get('/customer', [ProfileController::class, 'index'])->name("ProfileList");
+
+Route::resource('profile', ProfileController::class);
 
