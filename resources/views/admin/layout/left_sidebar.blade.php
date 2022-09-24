@@ -42,12 +42,59 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
+
+                            Product
+                            <i class="fas fa-angle-left right"></i>
+
                             products
                             <i class="right fas fa-angle-left"></i>
+
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+
+                            <a href="{{ route("ProductList") }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Product List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route("CreateProduct") }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Product Create</p>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            Customer
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route("ProfileList") }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Customer List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+
+
+
+
+
                             <a href="{{ route('Product.index') }}" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
@@ -69,6 +116,7 @@
                     </ul>
                 </li>
            
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
