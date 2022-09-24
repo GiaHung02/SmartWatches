@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('mycss')
+    
+@endsection
 @section('content')
 <div class="container">
 
@@ -18,39 +21,38 @@
                 @endphp
                 @if (Session::has('cart') != null)
                     @foreach (Session::get('cart') as $key => $item)
-
-                <li class="pr-cart-item">
-                    <div class="product-image">
-                        <figure><img src="{{ asset('images') . '/' . $item->products->photo }}" alt="{{ $item->product->name }}"></figure>
-                    </div>
-                    <div class="product-name">
-                        <a class="link-to-product"
-                            href="{{ route('detail', $item->products->name) }}">Radiant-360 R6 Wireless
-                            Omnidirectional Speaker [White]</a>
-                    </div>
-                    <div class="price-field produtc-price">
-                        <p class="price">$ {{ $item->product->price }}</p>
-                    </div>
-                    <div class="quantity">
-                        <div class="quantity-input">
-                            <input data-pid="{{ $item->product->id }}" type="text" name="product-quatity" value="{{ $item->product->quantity }}" data-max="120"
-                                pattern="[0-9]*">
-                            <a class="btn btn-increase" href="#"></a>
-                            <a class="btn btn-reduce" href="#"></a>
-                        </div>
-                    </div>
-                    <div class="price-field sub-total">
-                        <p class="price">$ {{ $item->product->price * $item->quantity }}</p>
-                    </div>
-                    <div class="delete">
-                        <a href="#" class="btn btn-delete" title="">
-                            <span>Delete from your cart</span>
-                            <i class="fa fa-times-circle" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </li>
+                     
+                        <li class="pr-cart-item">
+                            <div class="product-image">
+                                <figure><img src="{{ asset('assets/images/products') . '/' . $item->products->photo }}" alt="{{ $item->products->name }}"></figure>
+                            </div>
+                            <div class="product-name">
+                                <a class="link-to-product"
+                                    href="{{ route('product.detail', $item->products->name) }}">{{ $item->products->name }}</a>
+                            </div>
+                            <div class="price-field produtc-price">
+                                <p class="price">$ {{ $item->products->price }}</p>
+                            </div>
+                            <div class="quantity">
+                                <div class="quantity-input">
+                                    <input data-pid="{{ $item->products->id }}" type="text" name="product-quatity" value="{{ $item->quantity }}" data-max="120" class="number"
+                                        pattern="[0-9]*">
+                                    <a class="btn btn-increase"  href="#"></a>
+                                    <a class="btn btn-reduce"  href="#"></a>
+                                </div>
+                            </div>
+                            <div class="price-field sub-total">
+                                <p class="price">$ {{ $item->products->price * $item->quantity }}</p>
+                            </div>
+                            <div class="delete">
+                                <a href="#" class="btn btn-delete" title="">
+                                    <span>Delete from your cart</span>
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </li>
                 @php
-                    $total += $item->product->price * $item->quantity
+                    $total += $item->products->price * $item->quantity
                     
                 @endphp
                     @endforeach
@@ -87,33 +89,80 @@
 
 @section('myjs')
     <script>
+    
+        // $(document).on('click', '.btn-update', function(e){
+        //     e.preventDefault();
+        //     let elem = $('inputp[name="product-quatity"]');
+
+
+        //     ids=[];
+        //     quantities = [];
+        //     $.each(elem, function(index, value){
+        //         ids.push($(this).data('pid'));
+        //         quantities.push($(value).val());
+        //     });
+        //     // console.log(ids);
+        //     // console.log(quantities);
+
+        //     $.ajax({
+        //         type: "post",
+        //         url: "{{ route('updateCart') }}",
+        //         data: {
+        //             ids: ids,
+        //             quantities: quantities,
+        //             _token: '{{ csrf_token() }}',
+        //         },
+        //         success: function (data) {
+        //             alert('add product to cart successfully.');
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
         $(document).on('click', '.btn-update', function(e){
-            e.preventDefault();
-            let elem = $('inputp[name="product-quatity"]');
+		e.preventDefault();
+		let elem = $('input[name="product-quatity"]');
 
+		ids = [];
+		quantities = [];
+		$.each(elem,function(index, value){
+			ids.push($(this).data('pid'));
+			quantities.push($(value).val());
+		});
+		$.ajax({
+			type: 'post',
+			url: "{{ route('updateCart') }}",
+			data: {
+				ids: ids,
+				quantities: quantities,
+				_token : '{{ csrf_token() }}',
 
-            ids=[];
-            quantities = [];
-            $.each(elem, function(index, value){
-                ids.push($(this).data('pid'));
-                quantities.push($(value).val());
-            });
-            // console.log(ids);
-            // console.log(quantities);
+			}, success: function(data) {
+				alert('update product cart successful.');
+				location.reload();
+			}
+		});
+	});
 
-            $.ajax({
-                type: "post",
-                url: "{{ route('updateCart') }}",
-                data: {
-                    ids: ids,
-                    quantities: quantities,
-                    _token: '{{ csrf_token() }}',
-                },
-                success: function (data) {
-                    alert('add product to cart successfully.');
-                    location.reload();
-                }
-            });
-        });
+    // let minus = document.querySelector('.btn-reduce');
+    // let increase = document.querySelector('.btn-increase');
+    // increase.addEventListener('click',() => document.getElementById("number").textContent++);
+    // minus.addEventListener('click',() => document.getElementById("number").textContent--);
+    let number = document.querySelector('.number').textContent;
+    let plus = document.querySelector('.btn-increase');
+    let minus = document.querySelector('.btn-decrease');
+    plus.addEventListener('click',() => {
+     number++ ;
+     document.querySelector('.number').textContent = number;
+     console.log(number);
+    });
+
+    minus.addEventListener('click',() => {
+     number--;
+     document.querySelector('.number').textContent = number;
+    }); 
+    
+
     </script>
+    
 @endsection

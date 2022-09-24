@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  <title>Timups</title> 
+  <title>SmatchWatches</title> 
 @endsection
 
 @section('css')
@@ -128,14 +128,14 @@
   <div class="container">
     <div class="heading_container heading_center">
       <form action=""method="POST">
-        
+        @csrf
         
         <input type="text" name="keywords_submit" placeholder="Search"/>
         <input type="submit" name="" class="btn btn-success btn-sm" value="submit"/>
 
       </form>
       <h2>
-        Latest Watches
+        All Watch
       </h2>
     </div>
     <div class="row">
@@ -145,9 +145,9 @@
      
       <div class="col-md-6 ">
         <div class="box">
-          <a href="">
+          <a href="{{route('product.detail', ['id'=> $product->id ])}}">
             <div class="img-box">
-              <img src="timups-html/timups-html/images/{{$product->photo}}" alt="">
+              <img src="{{ asset('assets/images/products') . '/' . $product->photo }}" alt="">
             </div>
             <div class="detail-box">
               <h6>
@@ -173,7 +173,7 @@
       
     </div>
     <div class="btn-box">
-      <a href="{{route('CATEGORY')}}">
+      <a href="{{ route('CATEGORY') }}">
         View All
       </a>
     </div>
@@ -235,7 +235,7 @@
             <img src="timups-html/timups-html/images/f1.png" alt="">
           </div>
           <div class="detail-box">
-            <h5>
+            <h5> 
               Fitness Tracking
             </h5>
             <p>
@@ -349,7 +349,7 @@
             <p>
               
             </p>
-            <a href="">
+            <a href="{{ route('samsung') }}">
               <span>
                 Read More
               </span>
@@ -370,7 +370,7 @@
             <p>
              
             </p>
-            <a href="">
+            <a href="{{ route('apple') }}">
               <span>
                 Read More
               </span>
@@ -412,7 +412,7 @@
             <p>
               
             </p>
-            <a href="">
+            <a href="{{ route('garmin') }}">
               <span>
                 Read More
               </span>
@@ -554,5 +554,3 @@
 
     
 @endsection
-
-

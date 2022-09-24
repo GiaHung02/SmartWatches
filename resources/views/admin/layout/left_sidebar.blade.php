@@ -39,26 +39,21 @@
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            User
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-
-
-                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
+
                             Product
                             <i class="fas fa-angle-left right"></i>
+
+                            products
+                            <i class="right fas fa-angle-left"></i>
+
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+
                             <a href="{{ route("ProductList") }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Product List</p>
@@ -98,6 +93,29 @@
 
 
 
+
+
+                            <a href="{{ route('Product.index') }}" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>view all product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('product.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>create product</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="../../index3.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p></p>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </li>
+           
 
             </ul>
         </nav>

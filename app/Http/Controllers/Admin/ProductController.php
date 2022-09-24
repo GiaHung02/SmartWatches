@@ -17,8 +17,8 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $prods = Product::all();
-        return view('admin.product.index', compact('prods'));
+        $products = Product::all();
+        return view('admin.product.index', compact('products' ));
     }
 
     /**
@@ -40,17 +40,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        
         $product = $request->all();
         // xu ly upload hinh vao thu muc
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $extension = $file->getClientOriginalExtension();
             if ($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg') {
-                return redirect()->route('product.create')->with('loi', 'Ban chi duoc upload anh co duoi la jpg png hoac jpeg');
+                return redirect()->route('ProductCreate')->with('loi', 'Ban chi duoc upload anh co duoi la jpg png hoac jpeg');
             }
             $imageName = $file->getClientOriginalName();
-            $file->move("images", $imageName);
+            $file->move("assets/images/products", $imageName);
         } else {
             $imageName = null;
         }
@@ -58,8 +59,9 @@ class ProductController extends Controller
         $p -> photo = $imageName;
         // $p->slug = \changeTitle($p->name);
         $p-> save();
-        return redirect()->route('admin.product.index');
-    }
+        // return redirect()->route('admin.product.index');
+        return redirect()->route('Product.index');
+     }
 
     /**
      * Display the specified resource.
@@ -78,9 +80,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id ,Request $request)
     {
-        //
+        $product = $request->all();
+        $product = Product::findOrFail($id);
+        return view("admin.product.edit");
+
     }
 
     /**
@@ -92,7 +97,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        try {
+            $product->update($request->all());
+            return redirect()->route('admin.product.index');
+        } catch (\Throwable $th) {
+            //throw $th
+        }
+        return redirect()->route('Product.index');
     }
 
     /**
@@ -101,8 +112,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request,  Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('Product.index');
     }
 }

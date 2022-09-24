@@ -6,9 +6,9 @@ use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ProfileController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +23,24 @@ use App\Http\Controllers\ProfileController;
 
 
 
-// admin
-Route::get('/admin', [DashboardController::class, 'dashboard']);
-Route::get('/product', [ProductController::class, 'index'])->name("ProductList");
-Route::get('/createproduct', [ProductController::class, 'create'])->name("CreateProduct");
+
+
+
+Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
+//Product Route
+Route::resource('/product', ProductController::class);
+
+Route::get('/product', [ProductController::class, 'index'])->name('Product.index');
+Route::get('/productCreate', [ProductController::class, 'create'])->name('ProductCreate');
+Route::post('/product', [ProductController::class, 'store'])->name('Product.store');
+Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');  
 
 
 // home
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-// home product
-Route::get('/search', [HomeController::class, 'search'])->name('sesarch');
+
+Route::post('/search', [HomeController::class, 'search'])->name('sesarch');
 
 Route::get('/CATEGORY', [HomeController::class, 'CATEGORY'])->name('CATEGORY');
 
@@ -45,17 +52,17 @@ Route::get('/xiaomi', [HomeController::class, 'xiaomi'])->name('xiaomi');
 
 Route::get('/garmin', [HomeController::class, 'garmin'])->name('garmin');
 
-Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');
+Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('product.detail');
 
-Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
+// Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'register_action'])->name('register.action');
 
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
-Route::post('/login', [AuthenticationController::class, 'login_action'])->name('processLogin');
-
-// Route::get('/detail/{id}',[HomeController::class,'detail'])->name('details');
+Route::post('/login', [AuthenticationController::class, 'processLogin'])->name('processLogin');
+// Route::get('/login', 'App\Http\Controllers\AuthenticationController@login')->name('login');
+// Route::post('/login', 'App\Http\Controllers\AuthenticationController@processLogin')->name('processLogin');   
 
 
 // auth
