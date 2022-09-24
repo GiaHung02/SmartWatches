@@ -6,10 +6,8 @@ use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Models\Product;
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,35 +25,26 @@ use App\Http\Controllers\ProfileController;
 
 
 
+Route::get('/admin/product', [ProductController::class, 'index'])->name("ProductList");
+Route::get('/createproduct', [ProductController::class, 'create'])->name("CreateProduct");
 
+Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function () {
+    Route::get('/admin', [UserController::class, 'user']);
+    Route::get('/admin/createuser', [UserController::class, 'displayAddUser'])->name('createuser');
+    Route::get('/admin/createuser', [UserController::class, 'addUser'])->name('addUser');
 
-Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
-//Product Route
-Route::resource('/product', ProductController::class);
-
-Route::get('/product', [ProductController::class, 'index'])->name('Product.index');
-Route::get('/productCreate', [ProductController::class, 'create'])->name('ProductCreate');
-Route::post('/product', [ProductController::class, 'store'])->name('Product.store');
-Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');  
-
-Route::prefix('admin')->name('admin')->middleware('foradmin')->group(function () {
-    Route::get('/', [UserController::class, 'users']);
-    Route::get('createuser', [UserController::class, 'displayAddUser'])->name('createuser');
-    Route::get('createuser', [UserController::class, 'addUser'])->name('addUser');
-
-    Route::get('resetPassword/{id}', [UserController::class, 'resetPassword']);
+    Route::get('resetPassword/{id}', 'UserController@resetPassword');
 });
 
 
 Route::prefix('user')->name('user')->middleware('checkLogin')->group(function () {
-    Route::get('userdetail/{id}', [UserController::class, 'userdetail']);
+    Route::get('details/{id}', 'UserController@details');
 });
 
 // home
 Route::get('/', [HomeController::class, 'home'])->name('home');
-
-
-Route::post('/search', [HomeController::class, 'search'])->name('sesarch');
+// home product
+Route::get('/search', [HomeController::class, 'search'])->name('sesarch');
 
 Route::get('/CATEGORY', [HomeController::class, 'CATEGORY'])->name('CATEGORY');
 
@@ -67,9 +56,9 @@ Route::get('/xiaomi', [HomeController::class, 'xiaomi'])->name('xiaomi');
 
 Route::get('/garmin', [HomeController::class, 'garmin'])->name('garmin');
 
-Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('product.detail');
+Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');
 
-// Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
+Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
 
 //register
 Route::get('/register', [UserController::class, 'register'])->name('register');
@@ -77,16 +66,12 @@ Route::post('/register', [UserController::class, 'register_action'])->name('regi
 
 //Login
 Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::post('/login', [UserController::class, 'login_action'])->name('processLogin');
+Route::post('/login', [UserController::class, 'checkLogin'])->name('processLogin');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 // Route::get('/detail/{id}',[HomeController::class,'detail'])->name('details');
 
-//         Route::get('/admin', [DashboardController::class, 'dashboard'])->name('home');
-//         Route::get('/product', [ProductController::class, 'index'])->name('product');
-//     });
-// });
 
 // auth
 // Route::group(['middleware' => 'signined'], function () {
@@ -108,3 +93,5 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // });
 
 
+// Demo midleware
+Route::resource('account', 'App\Http\Controllers\AccountController');
