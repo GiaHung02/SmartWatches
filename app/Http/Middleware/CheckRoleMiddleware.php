@@ -4,10 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-
-class ForAdmin
+class CheckRoleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,14 +14,12 @@ class ForAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        // dd($request->session()->get('user'));
-        if (Auth::user() &&  Auth::user()->admin == 1) {
+        if ($request->session()->has('user')) {
+
             return $next($request);
         }
-
         return redirect('login');
     }
 }

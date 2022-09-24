@@ -20,10 +20,10 @@
 
         body {
             /* height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px; */
             background: linear-gradient(135deg, #71b7e6, #9b59b6);
         }
 
@@ -40,14 +40,14 @@
             margin: 10vh auto;
 
             /* display: flex;
-            flex-direction: column;
-           
-            background: transparent;
-            box-shadow: 0 0 15px rgb(255, 255, 255);
-            border-radius: 15px;
-            width: 500px;
-            margin: 10vh auto;
-            color: aliceblue; */
+                    flex-direction: column;
+                   
+                    background: transparent;
+                    box-shadow: 0 0 15px rgb(255, 255, 255);
+                    border-radius: 15px;
+                    width: 500px;
+                    margin: 10vh auto;
+                    color: aliceblue; */
         }
 
         .container_register .title {
@@ -199,63 +199,66 @@
     <div class="container_register">
         <div class="title">Registration</div>
         <div class="content">
-            @if($errors->any())
-            @foreach ($errors->all() as $err)
-            <p class="alert alert-danger"> {{ $err }}</p>
-            @endforeach
-
+            @if (count($errors)>0)
+                @foreach ($errors as $err)
+                    <p class="alert alert-danger"> {{ $err }}</p>
+                @endforeach
             @endif
-            <form method="POST" action="{{ route('register.action') }}">
-              @csrf
+            <form method="POST" action="{{ route('register.action') }}" enctype="multipart/form-data">
+                @csrf
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Full Name <span class="text-danger">*</span> </span>
-                        <input type="text" placeholder="Enter your name" name="fullname" value="{{ old('fullname') }}">
+                        <span class="details">Email <span class="text-danger">*</span></span>
+                        <input type="text" placeholder="Enter your email" name="email"
+                            value="{{ old('email') }}">
                     </div>
                     <div class="input-box">
-                        <span class="details">Username <span class="text-danger">*</span></span>
-                        <input type="text" placeholder="Enter your username" name="username" value="{{ old('username') }}">
+                        <span class="details">Full Name </span>
+                        <input type="text" placeholder="Enter your name" name="fullname"
+                            value="{{ old('fullname') }}">
                     </div>
-                   
                     <div class="input-box">
                         <span class="details">Password <span class="text-danger">*</span></span>
-                        <input type="password" placeholder="Enter your password" name="password" >
+                        <input type="password" placeholder="Enter your password" name="password">
                     </div>
                     <div class="input-box">
                         <span class="details">Confirm Password <span class="text-danger">*</span></span>
-                        <input type="password" placeholder="Confirm your password" name="password_confirmation" >
+                        <input type="password" placeholder="Confirm your password" name="password_confirmation">
                     </div>
-                    <div class="input-box">
-                        <span class="details">Email</span>
-                        <input type="text" placeholder="Enter your email" name="email" value="{{ old('email') }}">
-                    </div>
+
                     <div class="input-box">
                         <span class="details">Phone Number</span>
-                        <input type="text" placeholder="Enter your number" name="phone" value="{{ old('phone') }}">
+                        <input type="text" placeholder="Enter your number" name="phone"
+                            value="{{ old('phone') }}">
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>
-                        <input type="text" placeholder="Enter your Address" name="address" value="{{ old('address') }}">
+                        <input type="text" placeholder="Enter your Address" name="address"
+                            value="{{ old('address') }}">
                     </div>
                 </div>
-
-                <div class="gender-details">
-                    <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">
-
-                    <span class="gender-title">Gender</span>
-                    <div class="category">
-                        <label for="dot-1">
-                            <span class="dot one"></span>
-                            <span class="gender">Male</span>
-                        </label>
-                        <label for="dot-2">
-                            <span class="dot two"></span>
-                            <span class="gender">Female</span>
-                        </label>
-
-                    </div>
+                <div>
+                    <span class="details">Role <span class="text-danger">* </span></span>
+                    <select name="role">
+                        <option value="0">Please choose one</option>
+                        <option value="1">Admin</option>
+                        <option value="2">User</option>
+                    </select>
+                    {{-- <input type="text" placeholder="Enter 1 for admin and 2 for user)" name="role" id="role" value="{{ old('role') }}"> --}}
                 </div>
+                <div>
+                    <span class="details">Active: <span class="text-danger">* </span></span>
+                    <select name="active">
+                        <option value="0">Please choose one</option>
+                        <option value="1">Active</option>
+                        <option value="2">Disable</option>
+                    </select>
+                </div>
+
+                <div>Image: 
+                    <input type="file" name="image">
+                </div>
+
                 <div class="button">
                     <input type="submit" value="Register">
                 </div>
