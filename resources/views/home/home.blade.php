@@ -147,7 +147,7 @@
         <div class="box">
           <a href="{{route('product.detail', ['id'=> $product->id ])}}">
             <div class="img-box">
-              <img src="{{ $product->photo }}" alt="">
+              <img src="{{ asset('assets/images/products') . '/' . $product->photo }}" alt="">
             </div>
             <div class="detail-box">
               <h6>

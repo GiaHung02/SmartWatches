@@ -51,7 +51,7 @@ class ProductController extends Controller
                 return redirect()->route('ProductCreate')->with('loi', 'Ban chi duoc upload anh co duoi la jpg png hoac jpeg');
             }
             $imageName = $file->getClientOriginalName();
-            $file->move("asset/images/products", $imageName);
+            $file->move("assets/images/products", $imageName);
         } else {
             $imageName = null;
         }

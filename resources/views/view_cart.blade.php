@@ -148,12 +148,13 @@
     // let increase = document.querySelector('.btn-increase');
     // increase.addEventListener('click',() => document.getElementById("number").textContent++);
     // minus.addEventListener('click',() => document.getElementById("number").textContent--);
-    let number = document.querySelector('.number')
+    let number = document.querySelector('.number').textContent;
     let plus = document.querySelector('.btn-increase');
     let minus = document.querySelector('.btn-decrease');
     plus.addEventListener('click',() => {
      number++ ;
      document.querySelector('.number').textContent = number;
+     console.log(number);
     });
 
     minus.addEventListener('click',() => {

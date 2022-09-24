@@ -48,11 +48,11 @@
 							<div class="product-gallery">
 							  <ul class="slides">
 
-							    <li data-thumb="{{ asset('assets/images/products/apple7.png') }}">
-							    	<img src="{{asset ('assets/images/products/apple7.png') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('assets/images/products') . '/' . $products->photo }}">
+							    	<img src="{{asset('assets/images/products') . '/' . $products->photo }}" alt="product thumbnail" />
 							    </li>
 
-							    <li data-thumb="{{ asset('assets/images/products/garmin1.png') }}">
+							    {{-- <li data-thumb="{{ asset('assets/images/products/garmin1.png') }}">
 							    	<img src="{{ asset('assets/images/products/garmin1.png') }}" alt="product thumbnail" />
 							    </li>
 
@@ -78,7 +78,7 @@
 
 							    <li data-thumb="{{ asset('assets/images/products/about-img.png') }}">
 							    	<img src="{{ asset('assets/images/products/about-img.png') }}" alt="product thumbnail" />
-							    </li>
+							    </li> --}}
 
 							  </ul>
 							</div>
