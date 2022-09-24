@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.master')
 <title>Profile Form</title>
 @section('content')
     <!-- Content Header (Page header) -->

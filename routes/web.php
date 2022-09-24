@@ -97,7 +97,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/clear_cart', [HomeController::class, 'clearCart'])->name('clearCart');
     Route::post('/save_cart', [HomeController::class, 'saveCart'])->name('saveCart');
 // });
-
+Route::resource('profile', ProfileController::class);
 
 // Route::group(['middleware' => 'signined', 'prefix' => 'admin', 'as' => 'admin.'], function () {
 //     Route::group(['middleware' => 'foradmin'], function () {
