@@ -97,13 +97,7 @@
 								{{ $products->name }}
 							</h2>
                             <div class="short-desc">
-                                <ul>
-                                    <li>Silicone band: 125-208 (mm).</li>
-                                    <li>
-										Power Sapphire tempered glass</li>
-                                    <li>Smart mode: 18 days / 22 days solar*.
-									</li>
-                                </ul>
+                                {{ $products->short_desc }}
                             </div>
                             <div class="wrap-social">
                             	<a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
@@ -116,14 +110,14 @@
                             <div class="quantity">
                             	<span>Quantity:</span>
 								<div class="quantity-input">
-									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" >
+									<input type="text"  id="product-quantity" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" >
 									
 									<a class="btn btn-reduce" href="#"></a>
 									<a class="btn btn-increase" href="#"></a>
 								</div>
 							</div>
 							<div class="wrap-butons">
-								<a href="#" class="btn add-to-cart" data-id={{ $products->id }}="">Add to Cart</a>
+								<a href="#" id="btn-submit" class="btn add-to-cart" data-id={{ $products->id }}>Add to Cart</a>
                                 <div class="wrap-btn">
                                     <a href="#" class="btn btn-compare">Add Compare</a>
                                     <a href="#" class="btn btn-wishlist">Add Wishlist</a>
@@ -366,27 +360,80 @@
 	<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
 	<!--footer area-->
-	<script>
-		$(document).ready(function(){
-			$('.add-to-cart').click(function(e) {
-			e.preventDefault();
-			let pid = $(this).data("id");
-			let quantity = $('input[name="product-quatity"]').val();
-			$.ajx({
-				type: 'post',
-				url: {{ route('addCart') }},
-				date: {
-					id: pid,
-					quantity: quantity,
-					_token : '{{ csrf_token() }}'
-				}, success: function(data) {
-					alert('add product to cart successful,');
-				}
-			})
 	
-			});
-		});
-		
-	</script>
 
+@endsection
+
+@section('myjs')
+<script>
+	// $(document).ready(function(){
+	// 	$('.add-to-cart').click(function(e) {
+	// 	e.preventDefault();
+	// 	let pid = $(this).data("id");
+	// 	let quantity = $('input[name="product-quatity"]').val();
+	// 	$.ajx({
+	// 		type: 'post',
+	// 		url: {{ route('addCart') }},
+	// 		date: {
+	// 			id: pid,
+	// 			quantity: quantity,
+	// 			_token : '{{ csrf_token() }}'
+	// 		}, success: function(data) {
+	// 			alert('add product to cart successful,');
+	// 		}
+	// 	})
+
+	// 	});
+	// });
+	
+	// setup csrf-token cho post method
+	// $.ajaxSetup({
+	// 	headers: {
+	// 		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	// 	}
+	// });
+
+	// $(document).ready(function () {
+	// 	pid = {{ $products->id }}
+	// 	btnSubmit = $('#btn-submit');
+
+	// 	btnSubmit.click(function(evt){
+	// 		evt.preventDefault(); // ham bo chuc nang cua link
+	// 		quantity = $('#product-quantity').val();
+
+	// 		$.ajax({
+	// 			type: 'POST',
+	// 			url: '{{ route('addCart') }}',
+	// 			data:{pid:pid, quantity:quantity},
+	// 			success:function(data){
+	// 				window.location={{ route('home') }} // chuyen trang bang javascript
+	// 			}
+	// 		});
+	// 	});
+
+	//   });
+
+	$(document).ready(function(){
+			$('.add-to-cart').click(function(e){
+				console.log("123");
+				e.preventDefault();
+				let pid = $(this).data("id");
+				let quantity = $('input[name="product-quatity"]').val();
+				console.log(pid, quantity);
+				
+				// dung jquery ajax gui request ve server
+				$.ajax({
+					type: 'post',
+					url: "{{ route('addCart') }}",
+					data: {
+						id: pid,
+						quantity: quantity,
+						_token : '{{ csrf_token() }}'
+					}, success: function(data){
+						alert('add product to cart successful.')
+					}
+				});
+			})
+		});
+</script>
 @endsection

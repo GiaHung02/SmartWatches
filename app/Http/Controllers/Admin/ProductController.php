@@ -48,10 +48,10 @@ class ProductController extends Controller
             $file = $request->file('photo');
             $extension = $file->getClientOriginalExtension();
             if ($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg') {
-                return redirect()->route('product.create')->with('loi', 'Ban chi duoc upload anh co duoi la jpg png hoac jpeg');
+                return redirect()->route('ProductCreate')->with('loi', 'Ban chi duoc upload anh co duoi la jpg png hoac jpeg');
             }
             $imageName = $file->getClientOriginalName();
-            $file->move("images", $imageName);
+            $file->move("asset/images/products", $imageName);
         } else {
             $imageName = null;
         }
@@ -60,11 +60,7 @@ class ProductController extends Controller
         // $p->slug = \changeTitle($p->name);
         $p-> save();
         // return redirect()->route('admin.product.index');
-        return redirect()->route('Product');
-
-       
-
-
+        return redirect()->route('Product.index');
      }
 
     /**
@@ -107,7 +103,7 @@ class ProductController extends Controller
         } catch (\Throwable $th) {
             //throw $th
         }
-        return redirect()->route('Product');
+        return redirect()->route('Product.index');
     }
 
     /**
@@ -119,6 +115,6 @@ class ProductController extends Controller
     public function destroy(Request $request,  Product $product)
     {
         $product->delete();
-        return redirect()->route('Product');
+        return redirect()->route('Product.index');
     }
 }

@@ -244,8 +244,6 @@
 
 	</main>
 	<!--main area-->
-
-    
 @endsection
 
 

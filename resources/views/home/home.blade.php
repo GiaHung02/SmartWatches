@@ -145,9 +145,9 @@
      
       <div class="col-md-6 ">
         <div class="box">
-          <a href="{{route('detail', ['id'=>$product->id])}}">
+          <a href="{{route('product.detail', ['id'=> $product->id ])}}">
             <div class="img-box">
-              <img src="timups-html/timups-html/images/{{$product->photo}}" alt="">
+              <img src="{{ $product->photo }}" alt="">
             </div>
             <div class="detail-box">
               <h6>
@@ -173,7 +173,7 @@
       
     </div>
     <div class="btn-box">
-      <a href="{{route('CATEGORY')}}">
+      <a href="{{ route('CATEGORY') }}">
         View All
       </a>
     </div>
@@ -235,7 +235,7 @@
             <img src="timups-html/timups-html/images/f1.png" alt="">
           </div>
           <div class="detail-box">
-            <h5>
+            <h5> 
               Fitness Tracking
             </h5>
             <p>
@@ -349,7 +349,7 @@
             <p>
               
             </p>
-            <a href="">
+            <a href="{{ route('samsung') }}">
               <span>
                 Read More
               </span>
@@ -370,7 +370,7 @@
             <p>
              
             </p>
-            <a href="">
+            <a href="{{ route('apple') }}">
               <span>
                 Read More
               </span>
@@ -412,7 +412,7 @@
             <p>
               
             </p>
-            <a href="">
+            <a href="{{ route('garmin') }}">
               <span>
                 Read More
               </span>
@@ -554,5 +554,3 @@
 
     
 @endsection
-
-
