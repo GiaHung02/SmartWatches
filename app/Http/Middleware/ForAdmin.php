@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use \App\Http\Middleware\ForAdmin;
-use Sentinel;
+use Illuminate\Support\Facades\Auth;
+
 
 class ForAdmin
 {
@@ -16,13 +16,14 @@ class ForAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+
+    public function handle($request, Closure $next)
     {
-        $user = Sentinel::getUser();
-        $role = Sentinel::getRoleRepository()->findBySlug('admin');
-        if(!$user -> inRole($role)) {
-            return redirect()->route('login');
+        // dd($request->session()->get('user'));
+        if (Auth::user() &&  Auth::user()->admin == 1) {
+            return $next($request);
         }
-        return $next($request);
+
+        return redirect('login');
     }
 }
