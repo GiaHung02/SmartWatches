@@ -22,7 +22,7 @@
         <div class="col-sm-6 col-xl-3">
           <div class="box">
             
-            <a href={{route('detail', ['id'=>$product->id])}}>
+            <a href={{route('product.detail', ['id'=>$product->id])}}>
 
               <div class="img-box">
                 <img src="timups-html/timups-html/images/apple2.png" alt="">

@@ -6,8 +6,9 @@ use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,16 @@ use App\Http\Controllers\AccountController;
 
 
 
-Route::get('/admin/product', [ProductController::class, 'index'])->name("ProductList");
-Route::get('/createproduct', [ProductController::class, 'create'])->name("CreateProduct");
+
+
+Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
+//Product Route
+Route::resource('/product', ProductController::class);
+
+Route::get('/product', [ProductController::class, 'index'])->name('Product.index');
+Route::get('/productCreate', [ProductController::class, 'create'])->name('ProductCreate');
+Route::post('/product', [ProductController::class, 'store'])->name('Product.store');
+Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');  
 
 Route::prefix('admin')->name('admin')->middleware('foradmin')->group(function () {
     Route::get('/', [UserController::class, 'users']);
@@ -44,8 +53,9 @@ Route::prefix('user')->name('user')->middleware('checkLogin')->group(function ()
 
 // home
 Route::get('/', [HomeController::class, 'home'])->name('home');
-// home product
-Route::get('/search', [HomeController::class, 'search'])->name('sesarch');
+
+
+Route::post('/search', [HomeController::class, 'search'])->name('sesarch');
 
 Route::get('/CATEGORY', [HomeController::class, 'CATEGORY'])->name('CATEGORY');
 
@@ -57,9 +67,9 @@ Route::get('/xiaomi', [HomeController::class, 'xiaomi'])->name('xiaomi');
 
 Route::get('/garmin', [HomeController::class, 'garmin'])->name('garmin');
 
-// Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');
+Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('product.detail');
 
-Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
+// Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
 
 //register
 Route::get('/register', [UserController::class, 'register'])->name('register');
@@ -73,6 +83,10 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Route::get('/detail/{id}',[HomeController::class,'detail'])->name('details');
 
+//         Route::get('/admin', [DashboardController::class, 'dashboard'])->name('home');
+//         Route::get('/product', [ProductController::class, 'index'])->name('product');
+//     });
+// });
 
 // auth
 // Route::group(['middleware' => 'signined'], function () {

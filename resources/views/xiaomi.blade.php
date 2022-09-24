@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-<title>XIAOMI</title>
+<title>xiaomi</title>
 
     
 @endsection
@@ -13,17 +13,16 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          XIAOMI
+         xiaomi
         </h2>
       </div>
       <div class="row">
         @foreach ($products as $product)
         <div class="col-md-6 ">
           <div class="box">
-            <a href={{route('detail')}}>
+            <a href={{route('detail', ['id'=>$product->id]) }}>
               <div class="img-box">
-                <a href={{route('detail', ['id'=>$product->id])}}>
-                <img src="timups-html/timups-html/images/xiaomi1.png" alt="">
+                <img src="timups-html/timups-html/images/samsung1.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
@@ -32,7 +31,7 @@
                 <h6>
                   Price:
                   <span>
-                    $${{$product->price}}
+                    $ {{$product->price}}
                   </span>
                 </h6>
               </div>

@@ -33,7 +33,7 @@
               <p>
                 
               </p>
-              <a href="{{route('samsung')}}">
+              <a href="{{ route('samsung') }}">
                 <span>
                   Read More
                 </span>

@@ -131,10 +131,10 @@
 <section class="shop_section layout_padding">
   <div class="container">
     <div class="heading_container heading_center">
-      <form action=""method="POST">
-        {{-- <i class="fa fa-search" aria-hidden="true"></i> --}}
+      <form action="{{route('sesarch')}}"method="POST">
+       @csrf
         
-        <input type="text" name="" placeholder="Search"/>
+        <input type="text" name="keywords_submit" placeholder="Search"/>
         <input type="submit" name="" class="btn btn-success btn-sm" value="submit"/>
 
       </form>
@@ -144,7 +144,7 @@
     </div>
     <div class="row">
       
-      @foreach ($products as $product)
+      @foreach ($search as $product)
           
      
       <div class="col-md-6 ">
@@ -173,161 +173,7 @@
         </div>
       </div>
       @endforeach
-       
-      {{-- <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="timups-html/timups-html/images/samsung2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                {{$product->name}}
-              </h6>
-              <h6>
-                Price:
-                <span>
-                  $ {{$product->price}}
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      @endforeach --}}
-      
-      {{-- <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="timups-html/timups-html/images/w3.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                {{$product->name}}
-              </h6>
-              <h6>
-                Price:
-                <span>
-                  $ {{$product->price}}
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-     
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="timups-html/timups-html/images/w4.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                {{$product->name}}
-              </h6>
-              <h6>
-                Price:
-                <span>
-                  ${{$product->price}}
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="timups-html/timups-html/images/w5.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                {{$product->name}}
-              </h6>
-              <h6>
-                Price:
-                <span>
-                  ${{$product->price}}
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6  col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="timups-html/timups-html/images/w6.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                {{$product->name}}
-              </h6>
-              <h6>
-                Price:
-                <span>
-                  ${{$product->price}}
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="timups-html/timups-html/images/w1.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                {{$product->name}}
-              </h6>
-              <h6>
-                Price:
-                <span>
-                  ${{$product->price}}
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>  --}}
-      {{-- @endforeach --}}
+ 
     </div>
     <div class="btn-box">
       <a href="{{route('CATEGORY')}}">

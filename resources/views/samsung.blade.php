@@ -20,7 +20,7 @@
         @foreach ($products as $product)
         <div class="col-md-6 ">
           <div class="box">
-            <a href={{route('detail', ['id'=>$product->id]) }}>
+            <a href={{route('product.detail', ['id'=>$product->id]) }}>
               <div class="img-box">
                 <img src="timups-html/timups-html/images/samsung1.png" alt="">
               </div>

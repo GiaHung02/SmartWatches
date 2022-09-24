@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Sentinel;
-// use App\Http\Middleware\Sentinel;
+// use Sentinel;
+use App\Http\Middleware\Sentinel;
 
 class AuthenticationController extends Controller
 {

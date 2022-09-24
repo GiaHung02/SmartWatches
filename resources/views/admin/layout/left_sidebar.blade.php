@@ -39,26 +39,21 @@
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            User
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-
-
-                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
+
                             Product
                             <i class="fas fa-angle-left right"></i>
+
+                            products
+                            <i class="right fas fa-angle-left"></i>
+
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+
                             <a href="{{ route("ProductList") }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Product List</p>
@@ -76,148 +71,51 @@
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fas fa-table"></i>
                         <p>
-                           Promotion
+                            Customer
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="../UI/general.html" class="nav-link">
+                            <a href="{{ route("ProfileList") }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Promotion List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../UI/icons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Promotion Create</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../UI/buttons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Buttons</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../UI/sliders.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sliders</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../UI/modals.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Modals & Alerts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../UI/navbar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Navbar & Tabs</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../UI/timeline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Timeline</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../UI/ribbons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ribbons</p>
+                                <p>Customer List</p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="../widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                            Charts
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="../charts/chartjs.html" class="nav-link">
+
+
+
+
+
+
+
+                            <a href="{{ route('Product.index') }}" class="nav-link">
+
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ChartJS</p>
+                                <p>view all product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../charts/flot.html" class="nav-link">
+                            <a href="{{ route('product.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
+                                <p>create product</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="../charts/inline.html" class="nav-link">
+                        {{-- <li class="nav-item">
+                            <a href="../../index3.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
+                                <p></p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../charts/uplot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>uPlot</p>
-                            </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>
-                            Login & Register 
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="../examples/login.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Login</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/register.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Register</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/forgot-password.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Forgot Password </p>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </li>
-
-
-
-
-
-
-
-
+           
 
             </ul>
         </nav>
