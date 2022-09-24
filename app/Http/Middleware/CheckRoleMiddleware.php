@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Sentinel;
 
-class SiginedUser
+class CheckRoleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,10 +16,10 @@ class SiginedUser
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Sentinel::getUser();
-        if ($user == null) {
-            return redirect()->route('login');
+        if ($request->session()->has('user')) {
+
+            return $next($request);
         }
-        return $next($request);
+        return redirect('login');
     }
 }

@@ -15,9 +15,9 @@ class User extends Authenticatable
 
     use HasFactory;
 
-    protected $table='customer';
-    protected $primarykey='customer_id';
-    protected $fillable=['fullname','username','password'];
+    protected $table='accounts';
+    protected $primarykey='accounts_id';
+    protected $fillable=['email','password','fullname','role','active','image','address','phone'];
 
 
 

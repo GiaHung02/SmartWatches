@@ -185,7 +185,7 @@
         @if (session('password'))
         <p class="password-form">{{ session('password') }} </p>
         @if($errors->any())
-        @foreach ($errors->all() as $err)
+        @foreach ($errors as $err)
         <p class="alert alert-danger"> {{ $err }}</p>
         @endforeach
 
@@ -197,7 +197,7 @@
                 <span class="material-icons-outlined">
                     account_circle
                 </span>
-                <input type="text" name="username" value="{{ old('username') }}" placeholder="username or email">
+                <input type="text" name="email" value="{{ old('email') }}" placeholder=" email">
             </div>
 
             <div class="form-item">
@@ -209,12 +209,13 @@
             </div>
 
             <button type="submit"> LOGIN </button>
-            <p> Or Login Using</p>
+            {{-- <p> Or Login Using</p>
             <div class="options">
                 <button class="fb">Facebook</button>
                 <button class="gl">Google</button>
-            </div>
+            </div> --}}
             <p>New User? <a href="{{ route('register') }}">Create an account</a></p>
+            <p><a href="">Forgot password</a></p>
         </form>
 
     </div>
