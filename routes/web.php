@@ -25,11 +25,13 @@ use App\Http\Controllers\ProfileController;
 // Route::get('/admin', [DashboardController::class, 'dashboard']);
 // Route::get('/admin/createuser', [DashboardController::class, 'create_user'])->name('createuser');
 
+// home
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 
 
 
-Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
+// Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
 //Product Route
 Route::resource('/product', ProductController::class);
 
@@ -38,35 +40,29 @@ Route::get('/productCreate', [ProductController::class, 'create'])->name('Produc
 Route::post('/product', [ProductController::class, 'store'])->name('Product.store');
 Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');  
 
-Route::prefix('admin')->name('admin')->middleware('foradmin')->group(function () {
-    Route::get('/', [UserController::class, 'users']);
+// middleware admin
+// Route::prefix('admin')->name('admin')->middleware('foradmin')->group(function () {
+    Route::get('/admin', [UserController::class, 'users'])->name("ProfileList");
     Route::get('createuser', [UserController::class, 'displayAddUser'])->name('createuser');
     Route::get('createuser', [UserController::class, 'addUser'])->name('addUser');
 
     Route::get('resetPassword/{id}', [UserController::class, 'resetPassword']);
-});
+// });
 
-
+// middleware user
 Route::prefix('user')->name('user')->middleware('checkLogin')->group(function () {
     Route::get('userdetail/{id}', [UserController::class, 'userdetail']);
 });
 
-// home
-Route::get('/', [HomeController::class, 'home'])->name('home');
+
 
 
 Route::post('/search', [HomeController::class, 'search'])->name('sesarch');
-
 Route::get('/CATEGORY', [HomeController::class, 'CATEGORY'])->name('CATEGORY');
-
 Route::get('/samsung', [HomeController::class, 'samsung'])->name('samsung');
-
 Route::get('/apple', [HomeController::class, 'apple'])->name('apple');
-
 Route::get('/xiaomi', [HomeController::class, 'xiaomi'])->name('xiaomi');
-
 Route::get('/garmin', [HomeController::class, 'garmin'])->name('garmin');
-
 Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('product.detail');
 
 // Route::post('/add_cart', [HomeController::class, 'addCart'])->name('addCart');
