@@ -80,7 +80,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id ,Request $request)
+    public function edit(Product $id ,Request $request)
     {
         $product = $request->all();
         $product = Product::findOrFail($id);

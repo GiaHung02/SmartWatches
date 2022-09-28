@@ -69,10 +69,11 @@
                 <p class="summary-info total-info "><span class="title">Total</span><b class="index">${{ $total }}</b></p>
             </div>
             <div class="checkout-info">
-                <label class="checkbox-field">
-                    <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have
-                        promo code</span>
-                </label>
+                    <form action="{{ route('coupon.store') }}" method="POST" class="frm-input"  value="" >
+                        Promotion code: &nbsp
+                        <input type="text" name="coupon_code" id="coupon_code">
+                        <button type="submit" class="button button-plain">Apply</button>
+                    </form>
                 <a class="btn btn-checkout" href="{{ route('checkout') }}">Check out</a>
                 <a class="link-to-shop" href="{{ route('home') }}">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
             </div>

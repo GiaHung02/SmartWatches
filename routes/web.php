@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -88,3 +89,6 @@ Route::get('/customer', [ProfileController::class, 'index'])->name("ProfileList"
 
 Route::resource('profile', ProfileController::class);
 
+
+Route::post('/coupon', [CouponsController::class, 'store'])->name('coupon.store');
+Route::delete('/coupon', [CouponsController::class, 'destroy'])->name('coupon.destroy');
