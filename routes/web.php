@@ -34,6 +34,14 @@ Route::get('/productCreate', [ProductController::class, 'create'])->name('Produc
 Route::post('/product', [ProductController::class, 'store'])->name('Product.store');
 Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');  
 
+//Category
+Route::resource('/category', ProductController::class);
+
+Route::get('/category', [ProductController::class, 'index'])->name('Category.index');
+Route::get('/categoryCreate', [ProductController::class, 'create'])->name('categoryCreate');
+Route::post('/category', [ProductController::class, 'store'])->name('category.store');
+Route::get('/category/{id}', [ProductController::class, 'edit'])->name('category.edit');  
+
 
 // home
 Route::get('/', [HomeController::class, 'home'])->name('home');

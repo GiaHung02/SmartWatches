@@ -80,11 +80,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id ,Request $request)
+    public function edit(Product $product, Request $request)
     {
         $product = $request->all();
-        $product = Product::findOrFail($id);
-        return view("admin.product.edit");
+        // $product = Product::findOrFail($id);
+        return view('admin.product.edit', compact('product'));
 
     }
 
@@ -103,7 +103,7 @@ class ProductController extends Controller
         } catch (\Throwable $th) {
             //throw $th
         }
-        return redirect()->route('Product.index');
+        return redirect()->route('admin.Product.index');
     }
 
     /**

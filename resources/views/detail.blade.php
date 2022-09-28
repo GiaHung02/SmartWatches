@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-<title>GARMIN</title>
+<title>Detail</title>
 
     
 @endsection
@@ -84,14 +84,14 @@
 							</div>
 						</div>
 						<div class="detail-info">
-							<div class="product-rating">
+							{{-- <div class="product-rating">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <a href="#" class="count-review">(05 review)</a>
-                            </div>
+                            </div> --}}
                             <h2 class="product-name">
 								{{-- GARMIN FENIX 7 SAPPHIRE SOLAR WATCH - CARBON GRAY DLC TITANIUM WITH TI BLACK BAND --}}
 								{{ $products->name }}
@@ -99,13 +99,13 @@
                             <div class="short-desc">
                                 {{ $products->short_desc }}
                             </div>
-                            <div class="wrap-social">
+                            {{-- <div class="wrap-social">
                             	<a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
-                            </div>
-                            <div class="wrap-price">${{ $products->price }}<span class="product-price"></span></div>
-                            <div class="stock-info in-stock">
+                            </div> --}}
+                            <div class="wrap-price">Price: ${{ $products->price }}<span class="product-price"></span></div>
+                            {{-- <div class="stock-info in-stock">
                                 <p class="availability">Availability: <b>In Stock</b></p>
-                            </div>
+                            </div> --}}
 							
                             <div class="quantity">
                             	<span>Quantity:</span>
@@ -132,10 +132,8 @@
 							</div>
 							<div class="tab-contents">
 								<div class="tab-content-item active" id="description">
-									<p>Lorem ipsum dolor sit amet, an munere tibique consequat mel, congue albucius no qui, a t everti meliore erroribus sea. ro cum. Sea ne accusata voluptatibus. Ne cum falli dolor voluptua, duo ei sonet choro facilisis, labores officiis torquatos cum ei.</p>
-									<p>Cum altera mandamus in, mea verear disputationi et. Vel regione discere ut, legere expetenda ut eos. In nam nibh invenire similique. Atqui mollis ea his, ius graecis accommodare te. No eam tota nostrum eque. Est cu nibh clita. Sed an nominavi, et stituto, duo id rebum lucilius. Te eam iisque deseruisse, ipsum euismod his at. Eu putent habemus voluptua sit, sit cu rationibus scripserit, modus taria . </p>
-									<p>experian soleat maluisset per. Has eu idque similique, et blandit scriptorem tatibus mea. Vis quaeque ocurreret ea.cu bus  scripserit, modus voluptaria ex per.</p>
-								</div>
+									<p>{{ $products->description}}</p>
+							</div>
 								<div class="tab-content-item " id="add_infomation">
 									<table class="shop_attributes">
 										<tbody>
