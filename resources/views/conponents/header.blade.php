@@ -66,8 +66,8 @@
                     <i class="fa fa-user" aria-hidden="true" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"> LOGIN</i>
                  
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Login As User</a></li>
-                    <li><a class="dropdown-item " href="#">Login As Admin</a></li>
+                    <li><a class="dropdown-item" href="{{ route('login') }}">Login As User</a></li>
+                    <li><a class="dropdown-item " href="{{ route('adminlogin') }}">Login As Admin</a></li>
                     <li><a class="dropdown-item Disable" href="#"></a></li>
                   </ul>
                 </div>
