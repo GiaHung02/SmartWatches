@@ -5,12 +5,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Admin</h1>
+                    <h1>Admin Dashboard</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
+                        <button style="border-radius: 2em">
+                            <a href="{{ route('createuser') }}">
+                                <li class="breadcrumb-item active">Create New User
+                            </a></button>
                     </ol>
                 </div>
             </div>
@@ -23,8 +25,8 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Dash board</h3>
-                <h3><a href="{{ url('admin/displayAddUser') }}">Create New Account</a></h3>
+                
+               
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -37,28 +39,27 @@
             </div>
             <div class="card-body">
                 <h1>Account List</h1>
-                <table>
+                <table style="">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Image</th>
-                            <th>Email</th>
-                            <th>Fullname</th>
-                            <th>Phone</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                            <th>Phone</th>
-                            <th>Address</th>
+                            <th style="width: 1%">ID</th>
+                            <th style="width: 1%">Image</th>
+                            <th style="width: 2%">Email</th>
+                            <th style="width: 2%">Fullname</th>
+                            <th style="width: 2%">Phone</th>
+                            <th style="width: 2%">Role</th>
+                            <th style="width: 2%">Actions</th>
+                            
+                            <th style="width: 5%">Address</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $u)
                             <tr>
                                 <td>{{ $u->account_id }}</td>
-
                                 <td>
                                     @if ($u->image != null)
-                                        <img src="image/{{ $u->image }}" width="100px" alt="photo">
+                                        <img src="image/{{ $u->image }}" width="500px" alt=" avatar">
                                     @endif
                                 </td>
                                 <td>{{ $u->email }}</td>
@@ -66,7 +67,9 @@
                                 <td>{{ $u->phone }}</td>
                                 <td>{{ $u->role == 1 ? 'Admin' : 'User' }}</td>
                                 <td>{{ $u->active == 1 ? 'Active' : 'Disable' }}</td>
-                                <td><a href="{{url("admin/resetPassword/{$u->account_id}")}}">Reset Password</a></td>
+                                <td>{{ $u->address }}</td>
+
+                                {{-- <td><a href="{{url("admin/resetPassword/{$u->account_id}")}}">Reset Password</a></td> --}}
                             </tr>
                         @endforeach 
                     </tbody>

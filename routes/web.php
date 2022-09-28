@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Product;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\ForAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,18 +42,18 @@ Route::post('/product', [ProductController::class, 'store'])->name('Product.stor
 Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');  
 
 // middleware admin
-// Route::prefix('admin')->name('admin')->middleware('foradmin')->group(function () {
-    Route::get('/admin', [UserController::class, 'users'])->name("ProfileList");
-    Route::get('createuser', [UserController::class, 'displayAddUser'])->name('createuser');
-    Route::get('createuser', [UserController::class, 'addUser'])->name('addUser');
 
-    Route::get('resetPassword/{id}', [UserController::class, 'resetPassword']);
-// });
+    Route::get('/admin', [UserController::class, 'users'])->name("ProfileList");
+    Route::get('/createuser', [UserController::class, 'displayAddUser'])->name('createuser');
+    Route::post('/createuser', [UserController::class, 'addUser'])->name('addUser');
+
+    Route::get('/resetPassword/{id}', [UserController::class, 'resetPassword']);
+
 
 // middleware user
-Route::prefix('user')->name('user')->middleware('checkLogin')->group(function () {
-    Route::get('userdetail/{id}', [UserController::class, 'userdetail']);
-});
+
+    Route::get('/userdetail/{id}', [UserController::class, 'userdetail']);
+
 
 
 
@@ -71,10 +72,15 @@ Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('product.det
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'register_action'])->name('register.action');
 
-//Login
+//user Login
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'login_action'])->name('processLogin');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+//admin login
+Route::get('/adminlogin', [UserController::class, 'adminlogin'])->name('adminlogin');
+Route::post('/adminlogin', [UserController::class, 'adminlogin_action'])->name('adminprocessLogin');
+
 
 
 // Route::get('/detail/{id}',[HomeController::class,'detail'])->name('details');
@@ -102,5 +108,6 @@ Route::resource('profile', ProfileController::class);
 //         Route::get('/product', [ProductController::class, 'index'])->name('product');
 //     });
 // });
+
 
 
