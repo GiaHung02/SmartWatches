@@ -73,53 +73,48 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        // kiem tra dang nhap cach 1
+        // kiem tra dang nhap cach 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-            $user = Auth::user();
-            session()->push('user', $user);
+        
             return redirect()->intended('/');
         };
 
         return back()->with('password', 'Wrong email or Password!');
 
-        //  // kiem tra dang nhap cach 2
-        //  $email= $request->email;
-        //  $password = $request->password;
-        //     $user = User::where('email',$email)->where('password',$password)-> get();
-        //     if(count($user)==0){
-        //         $errs[0] = 'Wrong email or Password!';
-        //         return redirect('login')->with('errors',$errs);
-        //     }
-        //     //dua thong tin dang nhap vao session
-        //     session()->push('user',$user);
-        //     return redirect()->route('/');
     }
 
+    public function adminlogin()
+    {
+        $data['title'] = 'Register';
+        return view('adminlogin', $data);
+    }
+
+   
+
+    public function adminlogin_action(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        // kiem tra dang nhap
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $request->session()->regenerate();
+        
+            return redirect()->intended('admin');
+        };
+        return back()->with('password', 'Wrong email or Password!');
+
+    }
 
     //check user
 
-    public function checkLogin(Request $request)
-    {
-        $email = $request->email;
-        $pwd = $request->password;
-        $user = DB::table('accounts')->where('email', $email)->first();
-        if ($user != null && $user->password == $pwd) {
-            $request->session()->push('user', $user);
-            if ($user->role == 1) {
-                return redirect('admin');
-            } else {
-                return redirect("user/userdetail" . $user->account_id);
-            }
-        } else {
-            return redirect('login')->with('message', 'Login Fail.');
-        }
-    }
-
+   
     public function users()
     {
         $users = DB::table('accounts')->get();
-        return view('admin.user.dashboard')->with(['users' => $users]);
+        return view('admin.user.dashboard',$users)->with(['users' => $users]);
     }
 
     public function displayAddUser()
@@ -138,7 +133,7 @@ class UserController extends Controller
         $image = $request->image;
         $address = $request->address;
         $phone = $request->phone;
-        DB::table('account')->insert([
+        DB::table('accounts')->insert([
 
             'email' => $email,
             'password' => $password,
@@ -149,7 +144,7 @@ class UserController extends Controller
             'address' => $address,
             'phone' => $phone,
         ]);
-        return redirect('admin');
+        return redirect()->route('ProfileList');
     }
     public function resetPassword($id)
     {
