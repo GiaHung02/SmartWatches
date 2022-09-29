@@ -71,7 +71,7 @@ Route::post('/login', [AuthenticationController::class, 'processLogin'])->name('
     Route::post('/update_cart', [HomeController::class, 'updateCart'])->name('updateCart');
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
     Route::get('/clear_cart', [HomeController::class, 'clearCart'])->name('clearCart');
-    Route::get('/save_cart', [HomeController::class, 'saveCart'])->name('saveCart');
+    Route::post('/save_cart', [HomeController::class, 'saveCart'])->name('saveCart');
 
 
 
