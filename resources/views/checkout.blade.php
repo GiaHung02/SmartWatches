@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.master')
 @section('mycss')
 @endsection
 @section('content')
@@ -19,17 +19,17 @@
                     @csrf
                     <p class="row-in-form">
                         <label for="fname">first name<span>*</span></label>
-                        <input id="fname" type="text" name="fname" value="{{ $user->first_name }}"
+                        <input id="fname" type="text" name="fname" 
                             placeholder="Your name">
                     </p>
                     <p class="row-in-form">
                         <label for="lname">last name<span>*</span></label>
-                        <input id="lname" type="text" name="lname" value="{{ $user->last_name }}"
+                        <input id="lname" type="text" name="lname" 
                             placeholder="Your last name">
                     </p>
                     <p class="row-in-form">
                         <label for="email">Email Addreess:</label>
-                        <input id="email" type="email" name="email" value="{{ $user->email }}"
+                        <input id="email" type="email" name="email" 
                             placeholder="Type your email">
                     </p>
                     <p class="row-in-form">
@@ -94,7 +94,7 @@
                             @if (Session::has('cart'))
                             @foreach (Session::get('cart') as $key => $item)
                             @php
-                            $total += $item->product->price * $item->quantity;
+                            $total += $item->products->price * $item->quantity;
                             @endphp
                             @endforeach
                             @endif

@@ -5,12 +5,6 @@
 @section('content')
 <div class="container">
 
-    <div class="wrap-breadcrumb">
-        <ul>
-            <li class="item-link"><a href="{{ route('home') }}" class="link">home</a></li>
-            <li class="item-link"><span>View Cart</span></li>
-        </ul>
-    </div>
     <div class=" main-content-area">
 
         <div class="wrap-iten-in-cart">
@@ -22,7 +16,7 @@
                 @if (Session::has('cart') != null)
                     @foreach (Session::get('cart') as $key => $item)
                      
-                        <li class="pr-cart-item">
+                        <li class="pr-cart-item" >
                             <div class="product-image">
                                 <figure><img src="{{ asset('assets/images/products') . '/' . $item->products->photo }}" alt="{{ $item->products->name }}"></figure>
                             </div>
@@ -73,7 +67,7 @@
                     <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have
                         promo code</span>
                 </label>
-                <a class="btn btn-checkout" href="{{ route('profile.create') }}">Check out</a>
+                <a class="btn btn-checkout" href="{{ route('checkout') }}">Check out</a>
                 <a class="link-to-shop" href="{{ route('home') }}">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
             </div>
             <div class="update-clear">
@@ -82,6 +76,8 @@
             </div>
         </div>
     </div>
+
+
     <!--end main content area-->
 </div>
 <!--end container-->

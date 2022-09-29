@@ -98,7 +98,24 @@ Route::post('/adminlogin', [UserController::class, 'adminlogin_action'])->name('
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
     Route::get('/clear_cart', [HomeController::class, 'clearCart'])->name('clearCart');
     Route::post('/save_cart', [HomeController::class, 'saveCart'])->name('saveCart');
+<<<<<<< HEAD
+
+
+
+Route::group(['middleware' => 'signined', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::group(['middleware' => 'foradmin'], function () {
+
+        Route::get('/admin', [DashboardController::class, 'dashboard'])->name('home');
+        Route::get('/product', [ProductController::class, 'index'])->name('product');
+    });
+});
+
+
+Route::get('/customer', [ProfileController::class, 'index'])->name("ProfileList");
+
+=======
 // });
+>>>>>>> 4fd01bdecf88416baa0d0de7e2cc22822afa5263
 Route::resource('profile', ProfileController::class);
 
 // Route::group(['middleware' => 'signined', 'prefix' => 'admin', 'as' => 'admin.'], function () {

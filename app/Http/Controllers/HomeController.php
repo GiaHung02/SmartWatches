@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\cartItem;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Cartalyst\Sentinel\Sentinel;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use App\Models\Order;
+use App\Models\OrderDetail;
 
 class HomeController extends Controller
 {
@@ -166,7 +168,46 @@ class HomeController extends Controller
     }
 
     public function checkout(){
-        $user = Sentinel::getUser();
-        return view('checkout', compact('user'));
+        // $users = Sentinel::getUser();
+        return view('checkout');
+    }
+
+    public function index()
+    {
+        $profiles = Profile::all();
+        return view('profile.index')->with([
+            'profiles' => $profiles,
+        ]);
+    }
+
+    public function saveCart(Request $request){
+        $fname = $request->fname;
+        $lname = $request->lname;
+        $email = $request->email;
+        $phone = $request->phone;
+        $address = $request->address;
+        // $user = Sentinel::getUser();
+
+        if($request->session()->has('cart')){
+            $cart = $request->session()->get('cart');
+            //tao order 
+            $ord = new Order();
+            
+            $ord->oder_date = \Carbon\Carbon::now();
+            $ord->save();
+
+            foreach ($cart as $key => $item) {
+                $detail = new OrderDetail();
+                $detail->product_id = $item->products->id;
+                $detail->quantity = $item->quantity;
+                $detail->price = $item->products->price;
+                $detail->order_id = $ord->id;
+                $detail->save();
+                //$ord->details()->create($detail);
+            }
+            
+        }
+        $request->session()->forget('cart');
+        return redirect()->route('home');  
     }
 }
