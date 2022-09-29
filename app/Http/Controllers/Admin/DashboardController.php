@@ -9,6 +9,11 @@ class DashboardController extends Controller
 {
     //
     public function dashboard() {
-        return view('admin.dashboard');
+        return view('admin.user.dashboard');
     }
+
+    public function create_user() {
+        return view('admin.user.CreateUser');
+    }
+
 }

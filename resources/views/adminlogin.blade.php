@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Login</title>
+    <title>Admin Login</title>
 @endsection
 
 @section('content')
@@ -178,7 +178,7 @@
 
     <div class="background"></div>
     <div class="container_login">
-        <h2>Login Form</h2>
+        <h2>Admin Login Form</h2>
         @if (session('success'))
             <p class="success-form">{{ session('success') }} </p>
         @endif
@@ -191,7 +191,7 @@
 
         @endif
     @endif
-        <form method="POST" action="{{ route('processLogin') }}">
+        <form method="POST" action="{{ route('adminprocessLogin') }}">
             @csrf
             <div class="form-item">
                 <span class="material-icons-outlined">
@@ -214,7 +214,7 @@
                 <button class="fb">Facebook</button>
                 <button class="gl">Google</button>
             </div> --}}
-            <p>New User? <a href="{{ route('register') }}">Create an account</a></p>
+            <p>New Admin User? <a href="{{ route('register') }}">Create an account</a></p>
             <p><a href="">Forgot password</a></p>
         </form>
 
